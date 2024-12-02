@@ -37,9 +37,9 @@ This is a Node.js Express API that provides a simple search engine for airport L
   - Example: `/api/LHR`
 - **`/api/name/:name`:** Search by name (partial matching).
   - Example: `/api/name/london`
-  - Example: `/api/iata/LHR`
-- **`/api/country/:country`:** Search by country code.
-  - Example: `/api/country/US`
+  - Example: `/api/name/trudeau`
+- **`/api/country/:country`:** Search by country name
+  - Example: `/api/country/canada`
 - **`/api/position`:** Search by position (latitude/longitude).
   - Example: `/api/airports/position?lat=51.5074&lon=0.1278&radius=100`
 

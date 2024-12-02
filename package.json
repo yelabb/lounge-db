@@ -6,10 +6,13 @@
   "license": "UNLICENSED",
   "type": "module",
   "dependencies": {
-    "@nwpr/airport-codes": "^3.0.3"
+    "@nwpr/airport-codes": "^3.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
   },
   "scripts": {
     "start": "node index.js",
+    "dev": "nodemon index.js",
     "update:db": "node ./loungebuddy-db/crawler.js"
   },
   "devDependencies": {
