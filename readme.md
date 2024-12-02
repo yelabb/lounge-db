@@ -1,4 +1,3 @@
-```markdown
 # Airport Search API
 
 This is a Node.js Express API that provides a simple search engine for airport information. It uses the `@nwpr/airport-codes` library for basic airport data and also allows you to store detailed airport information in separate JSON files.
@@ -47,6 +46,6 @@ This is a Node.js Express API that provides a simple search engine for airport i
 
 ## Scripts
 
-- **`start`:**  Starts the rest api server
-- **`start:crawler`:**  update airport lounges data
+- **`start`:**  Starts the Rest api server
+- **`update:db`:**  update airport lounges json database
 
