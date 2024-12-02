@@ -19,7 +19,7 @@ This is a Node.js Express API that provides a simple search engine for airport L
    ```
 2. Install dependencies:
    ```bash
-   npm install express @nwpr/airport-codes
+   yarn
    ```
 
 ## Usage
