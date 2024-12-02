@@ -1,0 +1,18 @@
+{
+  "name": "lounges",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:yelabb/lounges.git",
+  "license": "UNLICENSED",
+  "type": "module",
+  "dependencies": {
+    "@nwpr/airport-codes": "^3.0.3"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "update:db": "node ./loungebuddy-db/crawler.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
