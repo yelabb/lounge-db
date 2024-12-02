@@ -1,3 +1,4 @@
+[![Fly Deploy](https://github.com/yelabb/lounge-db/actions/workflows/fly-deploy.yml/badge.svg)](https://github.com/yelabb/lounge-db/actions/workflows/fly-deploy.yml)
 # Airport Lounges Search API
 
 This is a Node.js Express API that provides a simple search engine for airport Lounges information. Airport data is stored in json inside ```./db``` folder.
