@@ -1,6 +1,6 @@
-# Airport Search API
+# Airport Lounges Search API
 
-This is a Node.js Express API that provides a simple search engine for airport information. It uses the `@nwpr/airport-codes` library for basic airport data and also allows you to store detailed airport information in separate JSON files.
+This is a Node.js Express API that provides a simple search engine for airport Lounges information. Airport data is stored in json inside ```./db``` folder.
 
 ## Features
 
