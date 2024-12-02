@@ -23,15 +23,6 @@ This is a Node.js Express API that provides a simple search engine for airport L
    yarn
    ```
 
-## Usage
-
-1. **Create an `airport-data` folder:** Place your `airportCode.json` files (e.g., `LHR.json`, `JFK.json`) in this folder. Each file should contain detailed information for the corresponding airport.
-2. **Start the server:**
-   ```bash
-   yarn start 
-   ```
-   The API will be running at `http://localhost:3000`.
-
 ## API Endpoints
 
 - **`/api/:iata`:** Get detailed airport information from JSON file.
