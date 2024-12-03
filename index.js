@@ -1,135 +1,176 @@
 import express from 'express';
 import cors from 'cors';
+import NodeCache from 'node-cache';
+import compression from 'compression';
 import { airports } from '@nwpr/airport-codes';
 import fs from 'fs';
 import path from 'path';
+import { getDistance } from 'geolib';
+import helmet from 'helmet'; 
+import { query, param, validationResult } from 'express-validator';
 
 const app = express();
 const port = 3000;
 
 // JSON request bodies
-const airportDataFolder = './db';
+const airportDataFolder = './db'; 
 
-// Middleware to accept cors
-app.use(cors())
-// Middleware to parse JSON request bodies
+// Internal cache for 1 hour
+const airportCache = new NodeCache({ stdTTL: 60 * 60 });
+
+// Middleware
+app.use(cors());
 app.use(express.json());
+app.use(compression());
+app.use(helmet()); // Set security headers
 
 // Helper function to read airport data from file (using promises)
-const getAirportData = (iata) => new Promise((resolve, reject) => {
-    const filePath = path.join(airportDataFolder, `${iata}.json`);
-    fs.readFile(filePath, 'utf8', (err, data) => {
-        if (err) {
-          resolve(null);
-        } else {
-            try {
-                resolve(JSON.parse(data));
-            } catch (parseError) {
-              resolve(null);
-            }
-        }
-    });
-});
-
-app.get('/api/:iata', async (req, res) => {
-    try {
-        const iata = req.params.iata.toUpperCase();
-        const airportData = await getAirportData(iata);
-
-        // Find the airport details using airport-codes
-        const airportInfo = airports.find(airport => airport.iata === iata);
-
-        if (!airportInfo) {
-            return res.status(404).json({ message: 'Airport not found in airport-codes data' });
-        }
-
-        res.json({
-            cities: [airportInfo.city], // Since it's a single airport
-            count: 1,
-            airports: airportData ? [airportData] : null
-        });
-    } catch (error) {
-        if (error.code === 'ENOENT') {
-            return res.status(404).json({ message: 'Airport data not found' });
-        } else {
-            console.error(error);
-            return res.status(500).json({ message: 'Error fetching airport data' });
-        }
+const getAirportData = async (iata) => {
+    const cachedData = airportCache.get(iata);
+    if (cachedData) {
+        return cachedData;
     }
-});
+
+    const filePath = path.join(airportDataFolder, `${iata}.json`); 
+    try {
+        const data = await fs.promises.readFile(filePath, 'utf8');
+        const airportData = JSON.parse(data);
+        airportCache.set(iata, airportData);
+        return airportData;
+    } catch (err) {
+        return null; 
+    }
+};
 
 // Search by name (partial matching)
-app.get('/api/name/:name', async (req, res) => {
-    try {
-        const searchName = req.params.name.toLowerCase();
-        const matchingAirports = airports.filter(airport => airport.name.toLowerCase().includes(searchName));
+app.get('/api/name/:name', 
+    param('name').isString().trim().escape(),
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
 
-        const airportDataPromises = matchingAirports.map(airport => getAirportData(airport.iata))
-        const airportData = await Promise.all(airportDataPromises);
+        try {
+            const searchName = req.params.name.toLowerCase();
+            const matchingAirports = airports.filter(airport => airport.name.toLowerCase().includes(searchName));
 
-        const cities = [...new Set(matchingAirports.map(airport => airport.city))];
+            const airportDataPromises = matchingAirports.map(airport => getAirportData(airport.iata));
+            const airportData = await Promise.all(airportDataPromises);
 
-        res.json({
-            cities: cities,
-            count: matchingAirports.length,
-            airports: airportData
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error fetching airport data' });
-    }
+            const cities = [...new Set(matchingAirports.map(airport => airport.city))];
+
+            res.json({
+                cities: cities,
+                count: matchingAirports.length,
+                airports: airportData 
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Error fetching airport data' });
+        }
 });
 
 // Search by country code
-app.get('/api/country/:country', async (req, res) => {
-    try {
-      const countryName = req.params.country.toLowerCase();
+app.get('/api/country/:country',
+    param('country').isString().trim().escape(),
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
 
-        const matchingAirports = airports.filter(airport => airport.country.toLowerCase() === countryName);
+        try {
+            const countryName = req.params.country.toLowerCase();
+            const matchingAirports = airports.filter(airport => airport.country.toLowerCase() === countryName);
 
-        const airportDataPromises = matchingAirports.map(airport => getAirportData(airport.iata));
-        const airportData = await Promise.all(airportDataPromises);
-        console.log(airportData)
-        const cities = [...new Set(matchingAirports.map(airport => airport.city))];
+            const airportDataPromises = matchingAirports.map(airport => getAirportData(airport.iata));
+            const airportData = await Promise.all(airportDataPromises);
 
-        res.json({
-            cities: cities,
-            count: matchingAirports.length,
-            airports: airportData.filter(d=>d)
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error fetching airport data' });
-    }
+            const cities = [...new Set(matchingAirports.map(airport => airport.city))];
+
+            res.json({
+                cities: cities,
+                count: matchingAirports.length,
+                airports: airportData.filter(d => d) 
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Error fetching airport data' });
+        }
 });
 
 // Search by position (latitude/longitude)
-app.get('/api/position', async (req, res) => {
-    try {
-        const lat = parseFloat(req.query.lat);
-        const lon = parseFloat(req.query.lon);
-        const radius = parseFloat(req.query.radius) || 50; // Default radius 50km
-
-        if (isNaN(lat) || isNaN(lon)) {
-            return res.status(400).json({ message: 'Invalid latitude or longitude' });
+app.get('/api/position', 
+    query('lat').isFloat(),
+    query('lon').isFloat(),
+    query('radius').optional().isFloat({ min: 0 }),
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
         }
 
-        const matchingAirports = airports.nearby(lat, lon, radius);
+        try {
+            const lat = parseFloat(req.query.lat);
+            const lon = parseFloat(req.query.lon);
+            const radius = parseFloat(req.query.radius) || 50; // Default radius 50km
 
-        const airportDataPromises = matchingAirports.map(airport => getAirportData(airport.iata));
-        const airportData = await Promise.all(airportDataPromises);
+            const matchingAirports = airports.filter(airport => {
+                const distance = getDistance(
+                    { latitude: lat, longitude: lon },
+                    { latitude: airport.latitude, longitude: airport.longitude }
+                );
+                return distance <= radius * 1000; // Convert radius to meters
+            });
 
-        const cities = [...new Set(matchingAirports.map(airport => airport.city))];
+            const airportDataPromises = matchingAirports.map(airport => getAirportData(airport.iata));
+            const airportData = await Promise.all(airportDataPromises);
 
-        res.json({
-            cities: cities,
-            count: matchingAirports.length,
-            airports: airportData.filter(d=>d)
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Error fetching airport data' });
-    }
+            const cities = [...new Set(matchingAirports.map(airport => airport.city))];
+
+            res.json({
+                cities: cities,
+                count: matchingAirports.length,
+                airports: airportData.filter(d => d) 
+            });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Error fetching airport data' });
+        }
+});
+
+// Get airport by IATA code
+app.get('/api/:iata',
+    param('iata').isString().isLength({ min: 3, max: 3 }).toUpperCase(),
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        try {
+            const iata = req.params.iata; 
+            const airportData = await getAirportData(iata);
+
+            const airportInfo = airports.find(airport => airport.iata === iata);
+            if (!airportInfo) {
+                return res.status(404).json({ message: 'Airport not found in airport-codes data' });
+            }
+
+            res.json({
+                cities: [airportInfo.city],
+                count: 1,
+                airports: airportData ? [airportData] : null 
+            });
+        } catch (error) {
+            if (error.code === 'ENOENT') {
+                return res.status(404).json({ message: 'Airport data not found' });
+            } else {
+                console.error(error);
+                return res.status(500).json({ message: 'Error fetching airport data' });
+            }
+        }
 });
 
 app.listen(port, () => {

@@ -7,8 +7,13 @@
   "type": "module",
   "dependencies": {
     "@nwpr/airport-codes": "^3.0.3",
+    "compression": "^1.7.5",
     "cors": "^2.8.5",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "express-validator": "^7.2.0",
+    "geolib": "^3.3.4",
+    "helmet": "^8.0.0",
+    "node-cache": "^5.1.2"
   },
   "scripts": {
     "start": "node index.js",
