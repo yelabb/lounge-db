@@ -75,7 +75,7 @@ app.get(
       res.json({
         cities: cities,
         count: matchingAirports.length,
-        airports: airportData,
+        airports: airportData.filter(d=>d),
       });
     } catch (error) {
       console.error(error);
