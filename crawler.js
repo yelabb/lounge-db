@@ -18,13 +18,13 @@ const airportUrls = iataCodes.map(
  * @param {string} url - The URL of the file to download.
  * @returns {Promise<void>} A promise that resolves when the download and save operation is complete.
  */
-const downloadAndSave = (url) => {
+const downloadAndSave = (url, skipExisting=true) => {
   return new Promise((resolve, reject) => {
     const airportId = path.basename(url, ".json");
     const filePath = path.join(__dirname, "db", `${airportId}.json`);
 
     // Check if the file already exists
-    if (fs.existsSync(filePath)) {
+    if (fs.existsSync(filePath) && skipExisting) {
       console.log(`Skipping download: ${airportId}.json already exists`);
       resolve();
       return;
@@ -62,8 +62,8 @@ const downloadAllAirports = async () => {
   for (let i = 0; i < airportUrls.length; i++) {
     try {
       await downloadAndSave(airportUrls[i]);
-      // Wait for 1 second before the next request to avoid overloading the server
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Wait for 500ms before the next request to avoid overloading the server
+      await new Promise((resolve) => setTimeout(resolve, 500));
     } catch (error) {
       console.error(`Error processing ${airportUrls[i]}: ${error}`);
     }

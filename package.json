@@ -13,7 +13,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "update:db": "node ./loungebuddy-db/crawler.js"
+    "update:db": "node ./crawler.js"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
