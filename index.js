@@ -13,7 +13,7 @@ const app = express();
 const port = 3000;
 
 // JSON request bodies
-const airportDataFolder = "./db";
+const airportDataFolder = "./db/iata";
 
 // Internal cache for 1 hour
 const airportCache = new NodeCache({ stdTTL: 60 * 60 });
