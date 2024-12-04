@@ -14,9 +14,11 @@ const port = 3000;
 
 // JSON request bodies
 const airportDataFolder = "./db/iata";
+const loungeDataFolder = "./db/lounges"; 
 
-// Internal cache for 1 hour
+// Internal caches for 1 hour
 const airportCache = new NodeCache({ stdTTL: 60 * 60 });
+const loungeCache = new NodeCache({ stdTTL: 60 * 60 });
 
 // Middleware
 app.use(cors());
@@ -47,9 +49,31 @@ const getAirportData = async (iata) => {
   }
 };
 
+// Helper function to read lounge data from file (using promises)
+const getLoungeData = async (loungeId) => {
+  if (!loungeId) {
+    return;
+  }
+  const cachedData = loungeCache.get(loungeId);
+  if (cachedData) {
+    return cachedData;
+  }
+
+  const filePath = path.join(loungeDataFolder, `${loungeId}.json`);
+  try {
+    const data = await fs.promises.readFile(filePath, "utf8");
+    const loungeData = JSON.parse(data);
+    loungeCache.set(loungeId, loungeData);
+    return loungeData;
+  } catch (err) {
+    return null;
+  }
+};
+
+
 // Search by name (partial matching)
 app.get(
-  "/api/name/:name",
+  "/api/airport/name/:name",
   param("name").isString().trim().escape(),
   async (req, res) => {
     const errors = validationResult(req);
@@ -86,7 +110,7 @@ app.get(
 
 // Search by country code
 app.get(
-  "/api/country/:country",
+  "/api/airport/country/:country",
   param("country").isString().trim().escape(),
   async (req, res) => {
     const errors = validationResult(req);
@@ -123,7 +147,7 @@ app.get(
 
 // Search by position (latitude/longitude)
 app.get(
-  "/api/position",
+  "/api/airport/position",
   query("lat").isFloat(),
   query("lon").isFloat(),
   query("radius").optional().isFloat({ min: 0 }),
@@ -169,7 +193,7 @@ app.get(
 
 // Get airport by IATA code
 app.get(
-  ["/api/:iata", "/api/iata/:iata"],
+  "/api/airport/iata/:iata",
   param("iata").isString().isLength({ min: 3, max: 3 }).toUpperCase(),
   async (req, res) => {
     const errors = validationResult(req);
@@ -203,6 +227,33 @@ app.get(
     }
   }
 );
+
+// Get lounge by ID
+app.get(
+  "/api/lounge/:loungeId",
+  param("loungeId").isString().trim().escape(), 
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    try {
+      const loungeId = req.params.loungeId;
+      const loungeData = await getLoungeData(loungeId);
+
+      if (!loungeData) {
+        return res.status(404).json({ message: "Lounge data not found" });
+      }
+
+      res.json(loungeData); 
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Error fetching lounge data" });
+    }
+  }
+);
+
 
 app.listen(port, () => {
   console.log(`Airport search API listening at http://localhost:${port}`);
