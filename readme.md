@@ -75,3 +75,645 @@ This is a Node.js Express API that provides a simple search engine for airport l
   ]
 }
 ```
+
+
+### Response Example (for `/api/lounge/lMsHJWj54i`)
+
+```json
+{
+  "status": 200,
+  "meta": {
+    "description": "Air Canada Maple Leaf Lounge at Montreal - Trudeau International Airport (YUL), Domestic Terminal. Learn more about the lounge: amenities, photos, review, opening hours, location."
+  },
+  "lounge": {
+    "id": "lMsHJWj54i",
+    "name": "Air Canada Maple Leaf Lounge",
+    "terminal": "Domestic Terminal",
+    "location": {
+      "latitude": 45.458424,
+      "longitude": -73.746187,
+      "terminalDirections": "Near Gate 2."
+    },
+    "airside": "insideSecurity",
+    "loungeImage": "https://images.loungebuddy.com/loungebuddy/image/upload/t_keyart_mobile/v1459215296/cnpbaiivqyr29rmwh3ii.jpg",
+    "hours": [
+      [
+        430,
+        2030
+      ],
+      [
+        430,
+        2030
+      ],
+      [
+        430,
+        2030
+      ],
+      [
+        430,
+        2030
+      ],
+      [
+        430,
+        2030
+      ],
+      [
+        430,
+        2030
+      ],
+      [
+        430,
+        2030
+      ]
+    ],
+    "amenities": [
+      {
+        "id": "SNACKS",
+        "name": "Snacks",
+        "paid": false
+      },
+      {
+        "id": "SPIRITS_LIQUOR",
+        "name": "Spirits & Liquor",
+        "paid": false
+      },
+      {
+        "id": "BEER_WINE",
+        "name": "Beer & Wine",
+        "paid": false
+      },
+      {
+        "id": "WIFI",
+        "name": "Wi-Fi",
+        "paid": false
+      },
+      {
+        "id": "NEWSPAPERS",
+        "name": "Newspapers & Magazines",
+        "paid": false
+      },
+      {
+        "id": "TV",
+        "name": "TVs",
+        "paid": false
+      },
+      {
+        "id": "INTERNET_TERMINALS",
+        "name": "Internet Terminals",
+        "paid": false
+      },
+      {
+        "id": "PRINTERS",
+        "name": "Printers & Copiers",
+        "paid": false
+      },
+      {
+        "id": "NON-SMOKING",
+        "name": "Non-Smoking",
+        "paid": false
+      },
+      {
+        "id": "18_CARDHOLDER",
+        "name": "18+ Cardholder",
+        "paid": false
+      }
+    ],
+    "amenityGroups": null,
+    "accessType": "NO_ACCESS",
+    "tempClosed": "open",
+    "slugPath": "air-canada-maple-leaf-lounge-domestic-terminal-lMsHJWj54i",
+    "price": null,
+    "airport": {
+      "id": "rMZQ4nUwot",
+      "IATA": "YUL",
+      "name": "Montreal - Trudeau International Airport",
+      "location": {
+        "latitude": 45.458325,
+        "longitude": -73.750455,
+        "description": "YMQ, Montreal, Quebec, Canada",
+        "radius": 700,
+        "city": "Montreal",
+        "countryCode": "CA",
+        "countryName": "Canada"
+      },
+      "timeZone": "America/Toronto",
+      "imageURL": "https://images.loungebuddy.com/loungebuddy/image/upload/v1478119629/axwgpk6yqqqdt0wavhaq.jpg"
+    },
+    "images": [
+      "https://images.loungebuddy.com/loungebuddy/image/upload/t_keyart_mobile/v1459215296/cnpbaiivqyr29rmwh3ii.jpg"
+    ],
+    "description": "Maple Leaf Lounges provide a private, serene escape from the bustle of airport activity, offering an unrivaled level of service in a cozy, comfortable setting with clean architectural lines, warm natural colours, and breathtaking views.",
+    "purchasable": false,
+    "importantInformation": {
+      "general": [],
+      "warning": [],
+      "regulatory": [],
+      "hasContent": false
+    },
+    "fullImages": [
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/cnpbaiivqyr29rmwh3ii.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/o6ioy164giht4mlnbypi.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/tudsema6q3osho4ve3gy.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/scgjgeyhvchfmgntqern.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/byxgu52fldfdraoup7tt.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/cefrssxau60eqmitbtkp.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/jeuuudmzatmsjgqfrrvk.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842901145.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842901351.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842901298.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842900961.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842901043.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842901128.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842901183.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842900951.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842900948.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842900991.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842900979.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842901245.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842900970.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842901211.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842901269.jpg",
+      "https://images.loungebuddy.com/loungebuddy/image/upload/c_fit,h_2000,w_2000/1730842901328.jpg"
+    ],
+    "bookingLoungeId": null
+  },
+  "allAmenities": [
+    {
+      "id": "PREMIUM_FOOD_FREE",
+      "name": "Premium Food",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/PREMIUM_FOOD.png"
+      }
+    },
+    {
+      "id": "PREMIUM_FOOD",
+      "name": "Premium Food",
+      "paid": true,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/PREMIUM_FOOD.png"
+      }
+    },
+    {
+      "id": "SNACKS_FREE",
+      "name": "Snacks",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/SNACKS_FREE.png"
+      }
+    },
+    {
+      "id": "SPIRITS_LIQUOR_FREE",
+      "name": "Spirits & Liquor",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/SPIRITS_LIQUOR.png"
+      }
+    },
+    {
+      "id": "SPIRITS_LIQUOR",
+      "name": "Spirits & Liquor",
+      "paid": true,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/SPIRITS_LIQUOR.png"
+      }
+    },
+    {
+      "id": "BEER_WINE_FREE",
+      "name": "Beer & Wine",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/BEER_WINE.png"
+      }
+    },
+    {
+      "id": "BEER_WINE",
+      "name": "Beer & Wine",
+      "paid": true,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/BEER_WINE.png"
+      }
+    },
+    {
+      "id": "WIFI_FREE",
+      "name": "Wi-Fi",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/WIFI.png"
+      }
+    },
+    {
+      "id": "WIFI",
+      "name": "Wi-Fi",
+      "paid": true,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/WIFI.png"
+      }
+    },
+    {
+      "id": "SHOWERS_FREE",
+      "name": "Showers",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/SHOWERS.png"
+      }
+    },
+    {
+      "id": "SHOWERS",
+      "name": "Showers",
+      "paid": true,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/SHOWERS.png"
+      }
+    },
+    {
+      "id": "SPA_FREE",
+      "name": "Spa Services",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/SPA.png"
+      }
+    },
+    {
+      "id": "SPA",
+      "name": "Spa Services",
+      "paid": true,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/SPA.png"
+      }
+    },
+    {
+      "id": "FLIGHT_MONITORS",
+      "name": "Flight Monitors",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/FLIGHT_MONITORS.png"
+      }
+    },
+    {
+      "id": "NEWSPAPERS",
+      "name": "Newspapers & Magazines",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/NEWSPAPERS.png"
+      }
+    },
+    {
+      "id": "TV",
+      "name": "TVs",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/TV.png"
+      }
+    },
+    {
+      "id": "PRIVATE_ROOMS_FREE",
+      "name": "Private Rooms",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/PRIVATE_ROOMS.png"
+      }
+    },
+    {
+      "id": "PRIVATE_ROOMS",
+      "name": "Private Rooms",
+      "paid": true,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/PRIVATE_ROOMS.png"
+      }
+    },
+    {
+      "id": "CHILDREN_ROOMS",
+      "name": "Children's Area",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/CHILDREN_ROOMS.png"
+      }
+    },
+    {
+      "id": "CONFERENCE_ROOMS_FREE",
+      "name": "Conference Rooms",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/CONFERENCE_ROOMS.png"
+      }
+    },
+    {
+      "id": "CONFERENCE_ROOMS",
+      "name": "Conference Rooms",
+      "paid": true,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/CONFERENCE_ROOMS.png"
+      }
+    },
+    {
+      "id": "INTERNET_TERMINALS",
+      "name": "Internet Terminals",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/INTERNET_TERMINALS.png"
+      }
+    },
+    {
+      "id": "PRINTERS_FREE",
+      "name": "Printers & Copiers",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/PRINTERS.png"
+      }
+    },
+    {
+      "id": "PRINTERS",
+      "name": "Printers & Copiers",
+      "paid": true,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/PRINTERS.png"
+      }
+    },
+    {
+      "id": "TELEPHONES",
+      "name": "Telephones",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/TELEPHONES.png"
+      }
+    },
+    {
+      "id": "SMOKING_ROOMS",
+      "name": "Smoking Area",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/SMOKING_ROOMS.png"
+      }
+    },
+    {
+      "id": "NON-SMOKING",
+      "name": "Non-Smoking",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/NON-SMOKING.png"
+      }
+    },
+    {
+      "id": "SHOE_SHINE",
+      "name": "Shoe Shine",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/SHOE_SHINE.png"
+      }
+    },
+    {
+      "id": "18_CARDHOLDER",
+      "name": "18+ Cardholder",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/18_CARDHOLDER.png"
+      }
+    },
+    {
+      "id": "21_CARDHOLDER",
+      "name": "21+ Cardholder",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/21_CARDHOLDER.png"
+      }
+    },
+    {
+      "id": "GYM",
+      "name": "Gym",
+      "paid": true,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/GYM.png"
+      }
+    },
+    {
+      "id": "GYM_FREE",
+      "name": "Gym",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/GYM.png"
+      }
+    },
+    {
+      "id": "CLOTHES_PRESS_FREE",
+      "name": "Clothes Press",
+      "paid": false,
+      "icons": {
+        "size24": "https://images.loungebuddy.com/loungebuddy/image/upload/v1590181336/amenities/CLOTHES_PRESS_FREE.png"
+      }
+    }
+  ],
+  "reviews": [
+    {
+      "createdAt": "2019-08-23T22:57:23.516Z",
+      "visibilityRating": 14.833333333333334,
+      "rating": 2,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Stuart",
+        "objectId": "ArlPGLfgkz"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "Sadly old school Air Canada domestic lounge. Worn. Dude at the desk clearly hates his customers. But okay food & comp open bar. Ice cream. Still better than any equivalent in the US.",
+      "parentId": "lMsHJWj54i"
+    },
+    {
+      "createdAt": "2019-07-11T18:29:31.366Z",
+      "visibilityRating": 15.333333333333334,
+      "rating": 4,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Kevin Bacon",
+        "objectId": "wdNtB1Bk5V"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "Haagen-Das ice cream in a drawer. Nice.",
+      "parentId": "lMsHJWj54i"
+    },
+    {
+      "createdAt": "2018-10-10T10:24:34.351Z",
+      "visibilityRating": 18.666666666666668,
+      "rating": 3,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Anonymous",
+        "objectId": "HwGp0PLmIk"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "You can access the National Bank lounge even on domestic flights, would recommend that instead.",
+      "parentId": "lMsHJWj54i"
+    },
+    {
+      "createdAt": "2018-07-01T23:36:30.044Z",
+      "visibilityRating": 19.833333333333332,
+      "rating": 2,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Me",
+        "objectId": "HlQHKcO0hN"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "The chairs looks worn out and tired. Quality of food is OK (lots of carbs, bananas not ripe) for breakfast. No employee in sight to help us for food. At least there was a complimentary phone charger.",
+      "parentId": "lMsHJWj54i"
+    },
+    {
+      "createdAt": "2017-07-27T18:15:45.359Z",
+      "visibilityRating": 23.833333333333332,
+      "rating": 2,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Anonymous",
+        "objectId": "O2ert4GNuL"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "Nice little lounge but was too hot the day I was there.",
+      "parentId": "lMsHJWj54i"
+    },
+    {
+      "createdAt": "2017-06-13T21:53:42.021Z",
+      "visibilityRating": 24.416666666666668,
+      "rating": 1,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Tracy",
+        "objectId": "sEO9CSIwp3"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "Terrible lounge. Poor food selection, poor ambiance and needs an overhaul. Even the free wine isn't worth the visit.",
+      "parentId": "lMsHJWj54i"
+    },
+    {
+      "createdAt": "2017-01-02T22:19:39.178Z",
+      "visibilityRating": 26.333333333333332,
+      "rating": 2,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Derek",
+        "objectId": "Vu2LZM4EWO"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "Classic Maple Leaf \"food\". Cooked cold spinach and corn kernels for a salad, two soups and chips and salsa.  It's like they try to find food that particularly sucks.",
+      "parentId": "lMsHJWj54i"
+    },
+    {
+      "createdAt": "2016-07-05T11:38:02.728Z",
+      "visibilityRating": 28.5,
+      "rating": 1,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Harry",
+        "objectId": "hb8Hb5xzg4"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "Crowded, messy (food droppings everywhere), and grouchy/unwelcoming front desk staff.",
+      "parentId": "lMsHJWj54i"
+    },
+    {
+      "createdAt": "2015-12-31T23:42:17.808Z",
+      "visibilityRating": 30.666666666666668,
+      "rating": 2,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Lisa Cheng",
+        "objectId": "j8UUh4AAL9"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "Good food selection and open bar. ",
+      "parentId": "lMsHJWj54i"
+    },
+    {
+      "createdAt": "2014-11-17T17:42:53.160Z",
+      "visibilityRating": 35.583333333333336,
+      "rating": 3,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Alain",
+        "objectId": "u7pwef0Imv"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "Good for relaxing and a drink. Food not great.",
+      "parentId": "lMsHJWj54i"
+    },
+    {
+      "createdAt": "2014-09-21T01:15:35.610Z",
+      "visibilityRating": 36.25,
+      "rating": 1,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Jean",
+        "objectId": "EA4HXlz2Vm"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "Just plain old... Need refurbishing.",
+      "parentId": "lMsHJWj54i"
+    },
+    {
+      "createdAt": "2014-07-22T19:47:12.299Z",
+      "visibilityRating": 37,
+      "rating": 2,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Bhavnesh",
+        "objectId": "TaiRkgLD6g"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "For one of Air Canada's largest cities this was a pretty poor lounge. ",
+      "parentId": "lMsHJWj54i"
+    },
+    {
+      "createdAt": "2014-02-21T23:04:53.688Z",
+      "visibilityRating": 38.75,
+      "rating": 3,
+      "member": {
+        "profileIcon": "/images/lounges/avatar_2x_ij4mbe.png",
+        "name": "Brian",
+        "objectId": "OSNa99G44z"
+      },
+      "type": {
+        "parent": "lMsHJWj54i",
+        "name": "review"
+      },
+      "content": "Things can get crowded, so make sure you don't come at a busy time. On the plus side, you can't beat cold Guinness on tap.",
+      "parentId": "lMsHJWj54i"
+    }
+  ],
+  "otherLounges": [],
+  "capacity": null,
+}
+```
