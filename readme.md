@@ -23,13 +23,18 @@ This is a Node.js Express API that provides a simple search engine for airport L
    yarn
    ```
 
+## Scripts
+
+- **`start`:**  Starts the Rest api server
+- **`update:db`:**  update airport lounges json database
+
 ## API Endpoints
 
 ### Routes
 
-- **`/api/:iata`:** Get detailed airport information from JSON file.
-  - Example: `/api/LHR`
-- **`/api/name/:name`:** Search by name (partial matching).
+- **`/api/iata/:iata`:** Get detailed airport information from JSON file.
+  - Example: `/api/LHR` or `/api/iata/LHR`
+- **`/api/name/:name`:** Search by name (partial matching is supported).
   - Example: `/api/name/london`
   - Example: `/api/name/trudeau`
 - **`/api/country/:country`:** Search by country name
@@ -37,7 +42,7 @@ This is a Node.js Express API that provides a simple search engine for airport L
 - **`/api/position`:** Search by position (latitude/longitude).
   - Example: `/api/airports/position?lat=51.5074&lon=0.1278&radius=100`
 
-### Example response
+### Response example
 
 ```
 {
@@ -803,9 +808,3 @@ This is a Node.js Express API that provides a simple search engine for airport L
   ]
 }
 ```
-
-## Scripts
-
-- **`start`:**  Starts the Rest api server
-- **`update:db`:**  update airport lounges json database
-

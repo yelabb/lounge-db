@@ -169,7 +169,7 @@ app.get(
 
 // Get airport by IATA code
 app.get(
-  "/api/:iata",
+  ["/api/:iata", "/api/iata/:iata"],
   param("iata").isString().isLength({ min: 3, max: 3 }).toUpperCase(),
   async (req, res) => {
     const errors = validationResult(req);
